@@ -10,12 +10,14 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "@tauri-apps/api": "1.0.0-rc.1",
+    "@tauri-apps/api": "^1.0.0-rc.1",
+    "axios": "^0.26.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-router-dom": "^6.2.2"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "1.0.0-rc.5",
+    "@tauri-apps/cli": "^1.0.0-rc.5",
     "@types/react": "17.0.39",
     "@types/react-dom": "17.0.13",
     "@vitejs/plugin-react": "1.2.0",
