@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #17382d;
+}
+
+button {
+  display: inline-block;
+  position: relative;
+  background-color: transparent;
+  border: 3px solid #eff9f7;
+  color:  #eff9f7;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0, 0, 0.175, 1);
+  border-radius: 0px;
+  box-shadow: 0.25em .25em  #eff9f7;
+  letter-spacing: 0.075em;
+  padding: .8em 1em;
+  margin: auto 2em;
+  align-self: center;
+  text-transform: uppercase;
+  z-index: 1;
+  box-shadow: -0.5em 0.5em rgba(16, 24, 50, 0);
+  transform-origin: left bottom;
+}
+
+button:before,
+button:after {
+  display: block;
+  position: absolute;
+  background:  #eff9f7;
+  border: 3px solid  #eff9f7;
+  content: '';
+  z-index: -1;
+  transform: skewY(-45deg);
+}
+button:before {
+  width: .31em;
+  height: 100%;
+  top: .15em;
+  left: -0.99em;
+}
+button:after {
+  width: 100%;
+  height: .31em;
+  right: 0.15em;
+  bottom: -0.99em;
+  background: #eff9f7;
+  border: 3px solid #eff9f7;
+  transform: skewX(-45deg);
+}
+button:focus,
+button:active {
+  /* outline: none; */
+}
+
+input {
+  background-color: transparent;
+  color: #eff9f7;
+  border: 3px solid #eff9f7;
+  margin: 0 0 16px;
+  padding: 6px 12px;
+  font-size: 0.84rem;
+  text-align: center;
+}
+
+.component-wrapper {
+  position: relative;
+  width: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.component-wrapper p {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+}
