@@ -4,50 +4,33 @@ import AuthService from "../Services/AuthService";
 import ducoLogo from '../Assets/img/logo.svg';
 import Home from "./Home";
 import Login from "./Login";
-import axios from "axios";
 
 const Router: React.FC = () => {
 
     const [loading, setLoading] = useState<boolean>(true);
-    const [currentUser, setCurrentUser] = useState<string>('');
     const [isUserValid, setIsUserValid] = useState<boolean>(false);
 
     useEffect(() => {
         const user = AuthService.getCurrentUser();
 
         if (user) {
-            setCurrentUser(user);
-            checkUserToken(user.username, user.authToken);
+            AuthService.checkToken().then(() => {
+                setIsUserValid(true);
+                setLoading(false);
+            }).catch(() => {
+                AuthService.logout();
+                setLoading(false);
+            });
+        }
+        else {
+            setLoading(false);
+            setIsUserValid(false);
         }
 
         return () => {
 
         }
     }, [])
-
-    const checkUserToken = async (username : string, authToken : string) => {
-        try {
-            let response = await axios.get(`https://server.duinocoin.com/v2/auth/check/${username}?token=${authToken}`);
-            const { results } = response.data;
-            if(results.success == true)
-            {
-                setIsUserValid(true);
-                setLoading(false);
-            }
-            else
-            {
-                AuthService.logout();
-                setIsUserValid(false);
-                setLoading(false);
-            }
-        }
-        catch (error) {
-            console.log(error);
-            AuthService.logout();
-            setIsUserValid(false);
-            setLoading(false);
-        }
-    }
 
   if (loading && !isUserValid) {
     return (

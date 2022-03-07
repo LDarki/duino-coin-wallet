@@ -38,6 +38,11 @@ class AuthService {
 
         return null;
     }
+
+    checkToken() {
+        let { username, authToken } = this.getCurrentUser();
+        return axios.get(API_URL + `v2/auth/check/${username}?token=${authToken}`);
+    }
 }
 
 export default new AuthService();

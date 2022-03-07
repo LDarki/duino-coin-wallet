@@ -11,13 +11,6 @@ const Login: React.FC = () => {
   const password = useFormInput('');
   const [error, setError] = useState<string>('');
 
-    useEffect(() => {
-        const user = AuthService.getCurrentUser();
-        if (user) {
-            navigate('/');
-        }
-    });
-
     const handleLogin = async () => {
         setError('');
         setLoading(true);
