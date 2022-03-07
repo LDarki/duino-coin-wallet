@@ -11,7 +11,9 @@ const Home: React.FC = () => {
 			<div className="h-full w-10/12 flex flex-col">
 				<Navbar />
 				<div className="w-full bg-container h-full">
-
+					<div className="w-8/12 bg-sidebar flex justify-around items-center shadow-md">
+						XD
+					</div>
 				</div>
 			</div>
 		</div>

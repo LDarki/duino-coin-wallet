@@ -26,28 +26,33 @@ const Router: React.FC = () => {
     }, [])
 
     const checkUserToken = async (username : string, authToken : string) => {
-        axios.get(`https://server.duinocoin.com/v2/auth/check/${username}?token=${authToken}`).then(response => {
-            let jsonData = response.data;
-            if(jsonData.success == true)
+        try {
+            let response = await axios.get(`https://server.duinocoin.com/v2/auth/check/${username}?token=${authToken}`);
+            const { results } = response.data;
+            if(results.success == true)
             {
                 setIsUserValid(true);
                 setLoading(false);
             }
             else
             {
+                AuthService.logout();
                 setIsUserValid(false);
                 setLoading(false);
             }
-        }).catch(error => {
+        }
+        catch (error) {
+            console.log(error);
+            AuthService.logout();
             setIsUserValid(false);
             setLoading(false);
-        });
+        }
     }
 
-  if (loading && currentUser) {
+  if (loading && !isUserValid) {
     return (
 		<div className='h-full w-full flex'>
-			<div className="h-full w-full flex justify-center items-center" style={{flexDirection:"column"}}>
+			<div className="h-full w-full flex justify-center items-center flex-col">
 				<div className="animate-bounce">
 					<img src={ducoLogo} className='w-24 h-24' alt="Duco-Logo" />
 				</div>
