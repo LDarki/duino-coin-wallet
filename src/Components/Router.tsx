@@ -18,7 +18,6 @@ const Router: React.FC = () => {
         if (user) {
             setCurrentUser(user);
             checkUserToken(user.username, user.authToken);
-            console.log(user);
         }
 
         return () => {
@@ -32,13 +31,16 @@ const Router: React.FC = () => {
             if(jsonData.success == true)
             {
                 setIsUserValid(true);
+                setLoading(false);
             }
             else
             {
                 setIsUserValid(false);
+                setLoading(false);
             }
         }).catch(error => {
             setIsUserValid(false);
+            setLoading(false);
         });
     }
 
